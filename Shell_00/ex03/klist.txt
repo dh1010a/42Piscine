@@ -1,0 +1,5 @@
+Credentials cache: API:39E2D529-2049-4155-BECE-6F9B1D1E6614
+        Principal: dopaek@42SEOUL.KR
+
+  Issued                Expires               Principal
+Feb  1 19:15:20 2022  Feb  2 05:15:20 2022  krbtgt/42SEOUL.KR@42SEOUL.KR
