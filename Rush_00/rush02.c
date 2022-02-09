@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush01.c                                           :+:      :+:    :+:   */
+/*   rush02.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: kihyukim <kihyukim@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 09:50:38 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/06 18:23:41 by kihyukim         ###   ########.fr       */
+/*   Created: 2022/02/06 17:19:47 by kihyukim          #+#    #+#             */
+/*   Updated: 2022/02/06 18:24:08 by kihyukim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_putchar(char c);
 
-void	set_updown(int	x, char left, char right)
+void	set_updown(int x, char left, char right)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ void	set_updown(int	x, char left, char right)
 	{
 		while (i < x - 2)
 		{
-			ft_putchar('*');
+			ft_putchar('B');
 			i++;
 		}
 		ft_putchar(right);
@@ -53,17 +53,17 @@ void	rush(int x, int y)
 	i = 0;
 	if (x < 1 || y < 1)
 		return ;
-	set_updown(x, '/', '\\');
+	set_updown(x, 'A', 'A');
 	ft_putchar('\n');
 	if (y > 1)
 	{
 		while (i < y - 2)
 		{
-			set_mid(x, '*');
+			set_mid(x, 'B');
 			ft_putchar('\n');
 			i++;
 		}
-		set_updown(x, '\\', '/');
-		ft_putchar('\n');
 	}
+	set_updown(x, 'C', 'C');
+	ft_putchar('\n');
 }

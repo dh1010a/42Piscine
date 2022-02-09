@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 09:50:28 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/06 18:03:17 by kihyukim         ###   ########.fr       */
+/*   Created: 2022/02/07 17:33:32 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/07 17:39:20 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char	c)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-	write(1, &c, 1);
+	int	temp;
+
+	temp = *a;
+	*a = temp / *b;
+	*b = temp % *b;
 }

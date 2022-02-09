@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/05 09:50:28 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/06 18:03:17 by kihyukim         ###   ########.fr       */
+/*   Created: 2022/02/07 20:04:27 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/09 14:51:36 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char	c)
+void	swap(int *a, int *b)
 {
-	write(1, &c, 1);
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	ft_sort_int_tab(int	*tab, int	size)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i <= size)
+	{
+		j = 0;
+		while (j < size - i)
+		{
+			if (tab[j] > tab[j + 1])
+				swap(&tab[j], &tab[j + 1]);
+			j++;
+		}
+		i++;
+	}
 }
