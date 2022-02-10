@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 19:20:13 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/10 10:35:01 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/10 14:47:49 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/10 14:47:50 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int	i;
+#include <unistd.h>
 
-	while (*str)
-	{
-		if (*str == *to_find)
-		{
-			i = 1;
-			while (str[i] == to_find[i] && to_find[i])
-				i++;
-			if (to_find[i] == '\0')
-				return (str);
-		}
-		str++;
-	}
-	return (0);
+void	ft_putstr(char *str)
+{
+	int	n;
+
+	n = 0;
+	while (str[n])
+		n++;
+	write (1, str, n);
 }

@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 19:20:13 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/10 10:35:01 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/10 15:23:22 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/10 15:23:22 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int	i;
+#include <unistd.h>
 
-	while (*str)
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
+	if (nb == -2147483648)
 	{
-		if (*str == *to_find)
-		{
-			i = 1;
-			while (str[i] == to_find[i] && to_find[i])
-				i++;
-			if (to_find[i] == '\0')
-				return (str);
-		}
-		str++;
+		ft_putchar('-');
+		ft_putchar('2');
+		ft_putnbr(147483648);
+		return ;
 	}
-	return (0);
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+		ft_putchar(nb + '0');
 }

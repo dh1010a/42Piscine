@@ -6,8 +6,10 @@
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 13:03:43 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/09 13:03:44 by dopaek           ###   ########.fr       */
+/*   Updated: 2022/02/10 19:43:44 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+void	*ft_print_memory(void *addr, unsigned int size)
+{
+}

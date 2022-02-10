@@ -1,30 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 19:20:13 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/10 10:35:01 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/10 18:16:55 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/10 18:38:23 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
-{
-	int	i;
 
-	while (*str)
-	{
-		if (*str == *to_find)
-		{
-			i = 1;
-			while (str[i] == to_find[i] && to_find[i])
-				i++;
-			if (to_find[i] == '\0')
-				return (str);
-		}
-		str++;
-	}
-	return (0);
-}

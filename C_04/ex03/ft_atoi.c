@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 19:20:13 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/10 10:35:01 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/10 17:42:02 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/10 18:13:01 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strstr(char *str, char *to_find)
+int	ft_atoi(char *str)
 {
-	int	i;
+	int	negative;
+	int	result;
 
-	while (*str)
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	negative = 1;
+	while (*str == '-' || *str == '+')
 	{
-		if (*str == *to_find)
-		{
-			i = 1;
-			while (str[i] == to_find[i] && to_find[i])
-				i++;
-			if (to_find[i] == '\0')
-				return (str);
-		}
+		if (*str == '-')
+			negative *= -1;
 		str++;
 	}
-	return (0);
+	result = 0;
+	while (*str >= '0' && *str <= '9')
+	{
+		result = (result * 10) + (*str - '0');
+		str++;
+	}
+	return (result * negative);
 }
