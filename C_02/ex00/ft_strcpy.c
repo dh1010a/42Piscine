@@ -6,14 +6,13 @@
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:18:14 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/08 14:09:45 by dopaek           ###   ########.fr       */
+/*   Updated: 2022/02/12 15:03:50 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_strcpy(char *dest, char *scr)
+char	*ft_strcpy(char *dest, char *scr)
 {
 	int	i;
-	int	n;
 
 	i = -1;
 	while (scr[++i])
