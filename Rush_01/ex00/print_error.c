@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 13:18:14 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/12 19:29:11 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/12 09:28:43 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/12 17:26:03 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *scr)
-{
-	int	i;
+#include "rush01.h"
 
-	i = -1;
-	while (scr[++i])
-		dest[i] = scr[i];
-	dest [i] = '\0';
-	return (dest);
+int	print_error(void)
+{
+	write (1, "Error\n", 6);
+	return (0);
 }

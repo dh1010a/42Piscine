@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 13:18:14 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/12 19:29:11 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/12 09:30:31 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/12 12:20:39 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *scr)
+#include "rush01.h"
+void	ft_putchar(char c)
 {
-	int	i;
-
-	i = -1;
-	while (scr[++i])
-		dest[i] = scr[i];
-	dest [i] = '\0';
-	return (dest);
+	write (1, &c, 1);
 }

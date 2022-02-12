@@ -6,38 +6,44 @@
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 10:15:52 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/12 15:09:24 by dopaek           ###   ########.fr       */
+/*   Updated: 2022/02/12 19:36:00 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+unsigned int	ft_strlen(char *src)
 {
-	int	n;
+	unsigned int	i;
 
-	n = 0;
-	while (str[n])
-		n++;
-	return (n);
+	i = 0;
+	while (src[i])
+		i++;
+	return (i);
 }
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
+	unsigned int	n;
 	unsigned int	i;
-	unsigned int	j;
 
-	i = ft_strlen(src);
-	if (i + 1 < size)
+	n = ft_strlen(src);
+	if (n + 1 < size)
 	{
-		j = -1;
-		while (++j < i + 1)
-			dest[j] = src[j];
+		i = 0;
+		while (i < n)
+		{
+			dest[i] = src[i];
+			i++;
+		}
 	}
-	else if (size)
+	else if (size > 0)
 	{
-		j = -1;
-		while (++j < size - 1)
-			dest[j] = src[j];
-		dest[j] = '\0';
+		i = 0;
+		while (i < size - 1)
+		{
+			dest[i] = src[i];
+			i++;
+		}
 	}
-	return (i);
+	dest[i] = '\0';
+	return (n);
 }

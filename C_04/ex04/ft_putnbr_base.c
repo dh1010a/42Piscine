@@ -52,7 +52,6 @@ int	valid_base(char *base)
 		return (0);
 	if (base_over(base, base_len) != 1)
 		return (0);
-	
 	return (1);
 }
 
@@ -65,7 +64,6 @@ void	ft_print(unsigned int nbr, char *base, unsigned int base_len)
 	}
 	else
 		ft_putchar(base[nbr]);
-	
 }
 
 void	ft_putnbr_base(int nbr, char *base)
@@ -75,6 +73,7 @@ void	ft_putnbr_base(int nbr, char *base)
 
 	if (valid_base(base) != 1)
 		return ;
+	base_len = 0;
 	while (base[base_len])
 		base_len++;
 	result = 0;
@@ -83,4 +82,6 @@ void	ft_putnbr_base(int nbr, char *base)
 		ft_putchar('-');
 		ft_print(-nbr, base, base_len);
 	}
+	else
+		ft_print(nbr, base, base_len);
 }
