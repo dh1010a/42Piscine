@@ -6,7 +6,7 @@
 /*   By: hehwang <hehwang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 09:28:53 by hehwang           #+#    #+#             */
-/*   Updated: 2022/02/12 17:23:36 by sryou            ###   ########.fr       */
+/*   Updated: 2022/02/13 17:31:29 by hehwang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,22 @@ int	**init_map(int size)
 	int	j;
 
 	map = (int **)malloc(sizeof(int *) * size);
-	i = 0;
-	while (i < size)
+	if (map == 0)
+		return (0);
+	i = -1;
+	while (++i < size)
 	{
 		map[i] = (int *)malloc(sizeof(int) * size);
-		j = 0;
-		while (j < size)
+		if (map[i] == 0)
 		{
-			map[i][j] = 0;
-			j++;
+			while (--i >= 0)
+				free(map[i]);
+			free(map);
+			return (0);
 		}
-		i++;
+		j = -1;
+		while (++j < size)
+			map[i][j] = 0;
 	}
 	return (map);
 }

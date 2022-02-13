@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:52:15 by sryou             #+#    #+#             */
-/*   Updated: 2022/02/12 18:49:25 by sryou            ###   ########.fr       */
+/*   Updated: 2022/02/13 17:07:39 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,6 @@ int	is_same(int *arr1, int *arr2, int size)
 		idx++;
 	}
 	return (1);
-}
-
-int	is_less_and_change(int *val1, int *val2)
-{
-	if (*val1 < *val2)
-	{
-		*val1 = *val2;
-		return (1);
-	}
-	return (0);
 }
 
 int	count_blocks_colrow(int **map, int idx, int map_size, int type)
@@ -56,19 +46,17 @@ int	count_blocks_colrow(int **map, int idx, int map_size, int type)
 			now_height = map[idx][temp];
 		else
 			now_height = map[idx][map_size - 1 - temp];
-		if (is_less_and_change(&min_height, &now_height))
+		if (is_le_dup(&min_height, now_height))
 			blocks++;
 		temp++;
 	}
 	return (blocks);
 }
 
-int	*count_blocks(int **map, int map_size)
+void	count_blocks(int **map, int *watch, int map_size)
 {
-	int	*watch;
 	int	idx;
 
-	watch = (int *)malloc(sizeof(int) * map_size * 4);
 	idx = 0;
 	while (idx < map_size)
 	{
@@ -78,16 +66,14 @@ int	*count_blocks(int **map, int map_size)
 		watch[map_size * 3 + idx] = count_blocks_colrow(map, idx, map_size, 3);
 		idx++;
 	}
-	return (watch);
 }
 
 int	is_valid_map(int **map, int *watch, int map_size)
 {
-	int	*watch_for_map;
+	int	watch_for_map[36];
 	int	is_valid;
 
-	watch_for_map = count_blocks(map, map_size);
+	count_blocks(map, watch_for_map, map_size);
 	is_valid = is_same(watch_for_map, watch, map_size * 4);
-	free(watch_for_map);
 	return (is_valid);
 }

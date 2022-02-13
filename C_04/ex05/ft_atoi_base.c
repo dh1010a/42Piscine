@@ -1,22 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 18:16:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/12 13:46:32 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/13 10:58:18 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/13 10:58:21 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
+#include <stdio.h>
 int	base_over(char *base, int base_len)
 {
 	int	i;
@@ -55,31 +48,59 @@ int	valid_base(char *base)
 	return (1);
 }
 
-void	ft_print(unsigned int nbr, char *base, unsigned int base_len)
+int	co_re(char *str, char *base, int result, int base_len)
 {
-	if (nbr >= base_len)
+	int	i;
+	int	error;
+
+	while (*str)
 	{
-		ft_print(nbr / base_len, base, base_len);
-		ft_print(nbr % base_len, base, base_len);
+		i = -1;
+		while (base[++i])
+		{
+			if (base[i] == *str)
+			{
+				result = result * base_len + i;
+				break ;
+			}
+		}
+		if (i < base_len)
+			str++;
+		else
+			return (result);
 	}
-	else
-		ft_putchar(base[nbr]);
+	return (result);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_atoi(char *str, char *base, int result, int base_len)
+{
+	int	negative;
+
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	negative = 1;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			negative *= -1;
+		str++;
+	}
+	result = co_re(str, base, result, base_len);
+	return (result * negative);
+}
+
+int	ft_atoi_base(char *str, char *base)
 {
 	int	base_len;
+	int	result;
+	int	negative;
 
+	result = 0;
 	if (valid_base(base) != 1)
-		return ;
+		return (0);
 	base_len = 0;
 	while (base[base_len])
 		base_len++;
-	if (nbr < 0)
-	{
-		ft_putchar('-');
-		ft_print(-nbr, base, base_len);
-	}
-	else
-		ft_print(nbr, base, base_len);
+	result = ft_atoi(str, base, result, base_len);
+	return (result);
 }

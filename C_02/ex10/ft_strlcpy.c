@@ -34,6 +34,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 			dest[i] = src[i];
 			i++;
 		}
+		dest[i] = '\0';
 	}
 	else if (size > 0)
 	{
@@ -43,7 +44,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 			dest[i] = src[i];
 			i++;
 		}
+		dest[i] = '\0';
 	}
-	dest[i] = '\0';
 	return (n);
 }

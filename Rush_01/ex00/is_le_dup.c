@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   is_less_and_change.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/08 13:18:14 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/13 10:36:26 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/12 20:57:27 by sryou             #+#    #+#             */
+/*   Updated: 2022/02/13 08:43:06 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, char *src)
+int	is_le_dup(int *val1, int val2)
 {
-	int	i;
-
-	i = -1;
-	while (src[++i])
-		dest[i] = src[i];
-	dest [i] = '\0';
-	return (dest);
+	if (*val1 < val2)
+	{
+		*val1 = val2;
+		return (1);
+	}
+	return (0);
 }
