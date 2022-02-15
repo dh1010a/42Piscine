@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 14:41:20 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/10 15:23:04 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/13 19:24:18 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/13 19:24:19 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	main(int argc, char *argv[])
 {
 	int	i;
+	int	dump;
 
+	dump = argc;
 	i = 0;
-	while (str[i])
+	while (argv[0][i])
 	{
 		i++;
 	}
-	return (i);
+	write(1, argv[0], i);
+	ft_putchar('\n');
+	return (0);
 }

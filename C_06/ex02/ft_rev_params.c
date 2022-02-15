@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 14:41:20 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/10 15:23:04 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/13 19:54:11 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/13 19:54:15 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	main(int argc, char *argv[])
 {
 	int	i;
+	int	j;
 
-	i = 0;
-	while (str[i])
+	i = argc - 1;
+	while (i > 0)
 	{
-		i++;
+		j = 0;
+		while (argv[i][j])
+		{
+			ft_putchar(argv[i][j]);
+			j++;
+		}
+		i--;
+		ft_putchar('\n');
 	}
-	return (i);
 }

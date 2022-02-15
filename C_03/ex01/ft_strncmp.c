@@ -6,20 +6,20 @@
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:09:34 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/09 15:46:08 by dopaek           ###   ########.fr       */
+/*   Updated: 2022/02/13 20:28:47 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (*s1 == *s2 && i < n && *s1)
+	while ((s1[i] || s2[i]) && i < n)
 	{
-		s1++;
-		s2++;
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
-	return (*s1 - *s2);
+	return (0);
 }
