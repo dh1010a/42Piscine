@@ -9,7 +9,7 @@
 /*   Updated: 2022/02/13 10:58:21 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 int	base_over(char *base, int base_len)
 {
 	int	i;
@@ -51,7 +51,6 @@ int	valid_base(char *base)
 int	co_re(char *str, char *base, int result, int base_len)
 {
 	int	i;
-	int	error;
 
 	while (*str)
 	{
@@ -93,7 +92,6 @@ int	ft_atoi_base(char *str, char *base)
 {
 	int	base_len;
 	int	result;
-	int	negative;
 
 	result = 0;
 	if (valid_base(base) != 1)

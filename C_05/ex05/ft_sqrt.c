@@ -10,4 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+int ft_sqrt(int nb)
+{
+	long long	i;
+	long long	result;
 
+	i = 1;
+	result = (long long)nb;
+	if (nb <= 0)
+		return (0);
+	while (i * i <= result)
+	{
+		if (i * i == result)
+			return ((int)i);
+		i++;
+	}
+	return (0);
+}
