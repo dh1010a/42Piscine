@@ -6,11 +6,11 @@
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:23:32 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/15 13:23:33 by dopaek           ###   ########.fr       */
+/*   Updated: 2022/02/17 12:31:43 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_sqrt(int nb)
+int	ft_sqrt(int nb)
 {
 	long long	i;
 	long long	result;

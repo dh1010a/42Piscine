@@ -6,11 +6,11 @@
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 13:22:12 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/15 13:22:13 by dopaek           ###   ########.fr       */
+/*   Updated: 2022/02/17 12:30:52 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_iterative_power(int nb, int power)
+int	ft_iterative_power(int nb, int power)
 {
 	int	result;
 

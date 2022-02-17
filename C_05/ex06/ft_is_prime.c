@@ -13,15 +13,17 @@
 int	ft_is_prime(int nb)
 {
 	long long	i;
+	long long	temp;
 
+	temp = nb;
 	if (nb <= 1)
 		return (0);
 	if (nb % 2 == 0 || nb % 3 == 0)
 		return (0);
 	i = 4;
-	while (i * i <= nb)
+	while (i * i <= temp)
 	{
-		if (nb % i == 0)
+		if (temp % i == 0)
 			return (0);
 		i++;
 	}

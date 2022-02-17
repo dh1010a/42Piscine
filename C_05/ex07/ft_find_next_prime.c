@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_prime(int nb)
+int	is_prime(long long temp)
 {
 	long long	i;
 
-	if (nb % 2 == 0 || nb % 3 == 0)
+	if (temp <= 1)
+		return (0);
+	if (temp % 2 == 0 || temp % 3 == 0)
 		return (0);
 	i = 4;
-	while (i * i <= nb)
+	while (i * i <= temp)
 	{
-		if (nb % i == 0)
+		if (temp % i == 0)
 			return (0);
 		i++;
 	}
@@ -28,17 +30,17 @@ int	is_prime(int nb)
 
 int	ft_find_next_prime(int nb)
 {
-	long long	i;
+	long long	temp;
 
+	temp = nb;
 	if (nb <= 2)
 		return (2);
-	i = 1;
-	if (is_prime(nb) == 1)
-		return (nb);
+	if (is_prime(temp) == 1)
+		return ((int)temp);
 	else
 	{
-		while (is_prime(nb) == 0)
-			nb++;
+		while (is_prime(temp) == 0)
+			temp++;
 	}
-	return (nb);
+	return ((int)temp);
 }

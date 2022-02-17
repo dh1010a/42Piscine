@@ -58,19 +58,18 @@ void	ft_sort(int size, char *argv[])
 int	main(int argc, char *argv[])
 {
 	int	i;
+	int	j;
 
-	if (argc > 2)
-		ft_sort(argc - 1, argv + 1);
-	while (*argv)
+	ft_sort(argc - 1, argv + 1);
+	i = 1;
+	while (i < argc)
 	{
-		i = 0;
-		while (argv[0][i])
-		{
-			ft_putchar(argv[0][i]);
-			i++;
-		}
+		j = 0;
+		while (argv[i][j])
+			j++;
+		write (1, argv[i], j);
 		ft_putchar('\n');
-		argv++;
+		i++;
 	}
 	return (0);
 }
