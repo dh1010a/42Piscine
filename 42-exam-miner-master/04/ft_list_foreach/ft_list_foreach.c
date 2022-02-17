@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: fwuensche <fwuensche@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2016/12/03 22:15:57 by angavrel          #+#    #+#             */
+/*   Updated: 2019/03/05 07:47:01 by fwuensche        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+#include "ft_list.h"
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
+{
+	t_list	*curr;
+
+	curr = begin_list;
+	while (curr)
 	{
-		if (temp % i == 0)
-			return (0);
-		i++;
+		(*f)(curr->data);
+		curr = curr->next;
 	}
-	return (1);
 }

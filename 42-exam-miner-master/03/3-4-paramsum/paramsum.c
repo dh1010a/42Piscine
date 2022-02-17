@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   paramsum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2016/12/07 17:58:26 by angavrel          #+#    #+#             */
+/*   Updated: 2016/12/08 17:15:42 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+#include <unistd.h>
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
-	{
-		if (temp % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int n)
+{
+	if (n > 9)
+		ft_putnbr(n / 10);
+	ft_putchar(n % 10 +'0');
+}
+
+int		main(int ac, char **av)
+{
+	av = 0;
+	ft_putnbr(ac - 1);
+	write(1, "\n", 1);
 }

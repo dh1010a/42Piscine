@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2017/07/14 11:55:29 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/14 11:55:56 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+#include <unistd.h>
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
-	{
-		if (temp % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
+void    ft_print_numbers(void)
+{
+    char nb;
+
+    nb = '0';
+    while (nb <= '9')
+    {
+        write(1, &nb, 1);
+        nb++;
+    }
 }

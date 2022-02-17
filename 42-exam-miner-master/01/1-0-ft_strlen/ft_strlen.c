@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2017/07/14 14:51:14 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/14 14:52:08 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
+int		ft_strlen(char *str)
 {
-	long long	i;
-	long long	temp;
+	int i;
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
-	{
-		if (temp % i == 0)
-			return (0);
+	i = 0;
+	while(str[i])
 		i++;
-	}
-	return (1);
+	return (i);
+}
+
+// DO NOT SUBMIT ANYTHING BELOW
+
+#include <stdio.h>
+
+int main (void)
+{
+	char str[] = "Flavio";
+
+	printf("%d\n", ft_strlen(str));
+	return (0);
 }

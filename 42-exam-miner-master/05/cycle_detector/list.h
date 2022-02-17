@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   list.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2019/03/25 14:27:13 by fwuensch          #+#    #+#             */
+/*   Updated: 2019/03/25 15:14:43 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+// YOU SHOULD NOT PUSH THIS FILE
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
-	{
-		if (temp % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
+#ifndef LIST_H
+# define LIST_H
+
+typedef struct     s_list
+{
+    int            data;
+    struct s_list  *next;
+}                  t_list;
+
+#endif

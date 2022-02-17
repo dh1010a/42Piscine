@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: angavrel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2016/12/27 06:47:44 by angavrel          #+#    #+#             */
+/*   Updated: 2016/12/27 07:06:53 by angavrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
+int		is_power_of_2(unsigned int n)
 {
-	long long	i;
-	long long	temp;
-
-	temp = nb;
-	if (nb <= 1)
+	if (n == 0)
 		return (0);
-	i = 2;
-	while (i * i <= temp)
-	{
-		if (temp % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
+	while (n % 2 == 0) 
+		n /= 2;
+	return ((n == 1) ? 1 : 0);
 }

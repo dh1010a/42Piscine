@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   aff_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2017/07/13 21:38:04 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/13 21:41:27 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+#include <unistd.h>
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
+int		main(int argc, char **argv)
+{
+	if (argc != 2)
+		write(1, "a", 1);
+	else
 	{
-		if (temp % i == 0)
-			return (0);
-		i++;
+		while (*argv[1])
+		{
+			if (*argv[1] == 'a')
+			{
+				write(1, "a", 1);
+				break;
+			}
+			argv[1]++;
+		}
 	}
-	return (1);
+	write(1, "\n", 1);
+	return (0);
 }

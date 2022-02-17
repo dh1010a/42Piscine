@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   first_word.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: fwuensch <fwuensch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2017/07/14 15:17:06 by fwuensch          #+#    #+#             */
+/*   Updated: 2017/07/14 15:19:31 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+#include <unistd.h>
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
+int		main(int ac, char **av)
+{
+	if (ac == 2)
 	{
-		if (temp % i == 0)
-			return (0);
-		i++;
+		while (*av[1] && (*av[1] == ' ' || *av[1] == '\t'))
+			++av[1];
+		while (*av[1] != '\0' && (*av[1] != ' ' && *av[1] != '\t'))
+			write(1, av[1]++, 1);
 	}
-	return (1);
+	ft_putchar('\n');
+	return (0);
 }

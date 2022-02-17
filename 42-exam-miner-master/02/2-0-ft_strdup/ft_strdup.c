@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: angavrel <angavrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 19:32:07 by dopaek           ###   ########.fr       */
+/*   Created: 2016/11/06 18:22:00 by angavrel          #+#    #+#             */
+/*   Updated: 2017/07/14 16:14:13 by fwuensch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+#include <stdlib.h>
 
-	temp = nb;
-	if (nb <= 1)
-		return (0);
-	i = 2;
-	while (i * i <= temp)
+char	*ft_strdup(char *src)
+{
+	char	*s;
+	int		len;
+
+	while (src[len])
+		++len;
+	if (!(s = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	s[len] = '\0';
+	while (len >= 0)
 	{
-		if (temp % i == 0)
-			return (0);
-		i++;
+		s[len] = src[len];
+		len--;
 	}
-	return (1);
+	return (s);
 }
