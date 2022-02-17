@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 13:23:55 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/17 17:26:35 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/17 16:20:03 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/17 16:20:03 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	long long	i;
-	long long	temp;
+#include <stdlib.h>
 
-	temp = nb;
-	if (nb <= 1)
+int	*ft_range(int min, int max)
+{
+	int	*arr;
+	int	i;
+
+	if (min >= max)
 		return (0);
-	i = 2;
-	while (i * i <= temp)
-	{
-		if (temp % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
+	arr = malloc(sizeof(int) * (max - min));
+	if (arr == 0)
+		return (0);
+	i = 0;
+	while (i < max - min)
+		arr[i] = min + i;
+	return (arr);
 }
