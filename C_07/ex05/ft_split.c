@@ -9,16 +9,23 @@
 /*   Updated: 2022/02/19 16:35:16 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	is_charset(char c, char set)
+#include <stdio.h>
+#include <stdlib.h>
+int	is_charset(char c, char *charset)
 {
-	if (c == set)
-		return (1);
-	else
-		return (0);
+	int i;
+
+	i = 0;
+	while (charset[i] != '\0')
+	{
+		if (charset[i] == c)
+			return (1);
+		++i;
+	}
+	return (0);
 }
 
-int	word_size(char *str, char set)
+int	word_size(char *str, char *set)
 {
 	int word_count;
 
@@ -36,18 +43,18 @@ int	word_size(char *str, char set)
 	}
 	return (word_count);
 }
-char put_word(char *str, char charset)
+char *put_word(char *str, char *charset)
 {
 	char *arr_word;
 	int	i;
 	int	len;
 
 	len = 0;
-	while (str[len] && is_charset(str[len]) == 0)
+	while (str[len] && is_charset(str[len], charset) == 0)
 		len++;
 	arr_word = (char *)malloc(sizeof(char) * len + 1);
 	i = 0;
-	while (str[i] && is_charset(str[i] == 0))
+	while (str[i] && is_charset(str[i], charset)==0)
 	{
 		arr_word[i] = str[i];
 		i++;
@@ -67,21 +74,20 @@ char	**ft_split(char *str, char *charset)
 	while (*str)
 	{
 		j = -1;
-		while (*str && is_charset(*str, charset[j++]) == 1 && charset[j])
+		while (*str && is_charset(*str, charset) == 1)
 			str++;
 		if (*str && is_charset(*str, charset) == 0)
 		{
 			arr[i] = put_word(str, charset);
 			i++;
-			while (*str && is_charset(str) == 0)
+			while (*str && is_charset(*str, charset) == 0)
 				str++;
 		}
 	}
 	arr[i] = 0;
 	return (arr);
 }
-#include <stdio.h>
-#include <stdlib.h>
+
 
 int main(void)
 {
@@ -104,4 +110,3 @@ int main(void)
 
 	}
 }
-
