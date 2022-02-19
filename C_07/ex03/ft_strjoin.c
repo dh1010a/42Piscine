@@ -10,4 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 
+int ft_len(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+char	*str_join(int size, char **strs, char *sep)
+{
+	int	i;
+	int	len;
+
+	i = -1;
+	while (++i < size)
+		len += ft_len(strs[i]);
+	
+}

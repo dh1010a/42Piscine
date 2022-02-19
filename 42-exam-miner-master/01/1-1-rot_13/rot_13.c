@@ -17,7 +17,6 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-
 int		rot_13(char c)
 {
 	if ((c >= 'A' && c <= 'M') || (c >= 'a' && c <= 'm'))
@@ -26,8 +25,6 @@ int		rot_13(char c)
 		c -= 13;
 	return (c);
 }
-
-
 
 int	main(int ac, char **av)
 {
