@@ -10,15 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_prime(long long temp)
+int	ft_is_prime(long long temp)
 {
 	long long	i;
 
 	if (temp <= 1)
 		return (0);
-	if (temp % 2 == 0 || temp % 3 == 0)
-		return (0);
-	i = 4;
+	i = 2;
 	while (i * i <= temp)
 	{
 		if (temp % i == 0)

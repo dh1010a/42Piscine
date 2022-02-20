@@ -9,11 +9,11 @@
 /*   Updated: 2022/02/19 16:35:16 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
+
 #include <stdlib.h>
 int	is_charset(char c, char *charset)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (charset[i] != '\0')
@@ -27,7 +27,7 @@ int	is_charset(char c, char *charset)
 
 int	word_size(char *str, char *set)
 {
-	int word_count;
+	int	word_count;
 
 	word_count = 0;
 	while (*str)
@@ -43,18 +43,19 @@ int	word_size(char *str, char *set)
 	}
 	return (word_count);
 }
-char *put_word(char *str, char *charset)
+
+char	*put_word(char *str, char *charset)
 {
-	char *arr_word;
-	int	i;
-	int	len;
+	char	*arr_word;
+	int		i;
+	int		len;
 
 	len = 0;
 	while (str[len] && is_charset(str[len], charset) == 0)
 		len++;
 	arr_word = (char *)malloc(sizeof(char) * len + 1);
 	i = 0;
-	while (str[i] && is_charset(str[i], charset)==0)
+	while (str[i] && is_charset(str[i], charset) == 0)
 	{
 		arr_word[i] = str[i];
 		i++;
@@ -68,7 +69,7 @@ char	**ft_split(char *str, char *charset)
 	int		i;
 	int		j;
 	char	**arr;
-	
+
 	arr = (char **)malloc(sizeof(char *) * (word_size(str, charset) + 1));
 	i = 0;
 	while (*str)
@@ -86,27 +87,4 @@ char	**ft_split(char *str, char *charset)
 	}
 	arr[i] = 0;
 	return (arr);
-}
-
-
-int main(void)
-{
-	{
-		printf("----ex05----\n");
-		char **str_arr;
-		int i;
-		str_arr = ft_split("Hello World Cat\tDog\nPizza School"," \n");
-		for(i=0;str_arr[i] != 0; i++)
-			printf("%s\n",str_arr[i]);
-		for(i=0;str_arr[i] != 0; i++)
-			free(str_arr[i]);
-		free(str_arr);	
-		str_arr = ft_split("Hello World Cat\tDog\nPizza School"," World");
-		for(i=0;str_arr[i] != 0; i++)
-			printf("%s\n",str_arr[i]);
-		for(i=0;str_arr[i] != 0; i++)
-			free(str_arr[i]);
-		free(str_arr);
-
-	}
 }

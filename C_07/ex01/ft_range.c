@@ -22,8 +22,8 @@ int	*ft_range(int min, int max)
 	arr = malloc(sizeof(int) * (max - min));
 	if (arr == 0)
 		return (0);
-	i = 0;
-	while (i < max - min)
+	i = -1;
+	while (i++ < max - min)
 		arr[i] = min + i;
 	return (arr);
 }

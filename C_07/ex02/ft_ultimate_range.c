@@ -24,8 +24,8 @@ int	ft_ultimate_range(int **range, int min, int max)
 	*range = malloc(sizeof(int) * (max - min));
 	if (*range == 0)
 		return (-1);
-	i = 0;
-	while (i < max - min)
+	i = -1;
+	while (++i < max - min)
 		(*range)[i] = min + i;
 	return (max - min);
 }
