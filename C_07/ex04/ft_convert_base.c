@@ -11,81 +11,82 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+int	ft_strlen(char *str);
+int	get_idx_base(char c, char *base);
+int	valid_base(char *str);
+int	get_nbrlen(unsigned int n, unsigned int base_size);
 
-int	valid_base(char *base);
-int	base_over(char *base, int base_len);
-int	co_re(char *str, char *base, int result, int base_len);
-int	ft_atoi(char *str, char *base, int result, int base_len);
-int	ft_atoi_base(char *str, char *base);
-
-char	*ft_putnbr_base(int nbr, char *base, int len)
+int	ft_atoi_base(char *str, char *base, int size)
 {
-	int		base_len;
-	int		i;
-	char	*final;
+	int	i;
+	int	n;
+	int	negative;
 
-	final = (char *)malloc(sizeof(char) * (len + 1));
-	if (valid_base(base) != 1)
-		return (0);
-	base_len = 0;
-	while (base[base_len])
-		base_len++;
-	i = len - 1;
-	if (nbr < 0)
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	negative = 1;
+	while (*str == '-' || *str == '+')
 	{
-		final[0] = '-';
-		nbr *= -1;
+		if (*str == '-')
+			negative *= -1;
+		str++;
 	}
-	while (nbr >= base_len)
+	n = 0;
+	i = get_idx_base(*str++, base);
+	while (i >= 0)
 	{
-		final[i] = base[nbr % base_len];
-		nbr /= base_len;
-		i--;
+		n = n * size + i;
+		i = get_idx_base(*str++, base);
 	}
-	final[i] = base[nbr];
-	final[len] = 0;
-	return (final);
+	return (n);
 }
 
-int	get_len(int n, char *base)
+unsigned int	get_nb(int n)
 {
-	int	base_len;
-	int	len;
+	unsigned int	nb;
 
-	len = 0;
-	base_len = 0;
-	while (base[base_len])
-		base_len++;
-	if (base_len == 1)
-		return (0);
 	if (n < 0)
-	{
-		n *= -1;
-		len++;
-	}
-	while (n >= base_len)
-	{
-		n /= base_len;
-		len++;
-	}
-	return (len + 1);
+		nb = -n;
+	else
+		nb = n;
+	return (nb);
+}
+
+int	get_i_len(unsigned int nb, int size, int n)
+{
+	int	i;
+
+	i = get_nbrlen(nb, size);
+	if (n < 0)
+		i++;
+	return (i);
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int		result;
-	char	*final2;
-	int		len;
+	unsigned int	nb;
+	char			*dest;
+	int				size;
+	int				i;
+	int				n;
 
-	result = 0;
-	result = ft_atoi_base(nbr, base_from);
-	if (result == 0)
-		return (0);
-	len = get_len(result, base_to);
-	if (len == 0)
-		return (0);
-	final2 = ft_putnbr_base(result, base_to, len);
-	if (final2 == 0)
-		return (0);
-	return (final2);
+	n = valid_base(base_from);
+	size = valid_base(base_to);
+	if (!(n != 0 && size != 0))
+		return (NULL);
+	n = ft_atoi_base(nbr, base_from, n);
+	nb = get_nb(n);
+	i = get_i_len(nb, size, n);
+	dest = malloc((i + 1) * sizeof(char));
+	if (dest == 0)
+		return (NULL);
+	dest[i] = '\0';
+	while (i--)
+	{
+		dest[i] = base_to[nb % size];
+		nb /= size;
+	}
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
 }

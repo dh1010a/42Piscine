@@ -67,14 +67,12 @@ char	*put_word(char *str, char *charset)
 char	**ft_split(char *str, char *charset)
 {
 	int		i;
-	int		j;
 	char	**arr;
 
 	arr = (char **)malloc(sizeof(char *) * (word_size(str, charset) + 1));
 	i = 0;
 	while (*str)
 	{
-		j = -1;
 		while (*str && is_charset(*str, charset) == 1)
 			str++;
 		if (*str && is_charset(*str, charset) == 0)

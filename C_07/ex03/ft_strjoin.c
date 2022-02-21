@@ -16,9 +16,12 @@ char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
 
-	i = -1;
-	while (src[++i])
+	i = 0;
+	while (src[i])
+	{
 		dest[i] = src[i];
+		i++;
+	}
 	dest [i] = '\0';
 	return (dest);
 }
@@ -36,27 +39,40 @@ int	ft_len(char *str)
 int	get_len(int size, char **strs, char *sep)
 {
 	int	i;
-	int	n;
+	int	len;
+	int	sep_len;
 
-	n = 0;
 	i = 0;
-	while (++i < size)
-		n += ft_len(strs[i]);
-	if (size > 0)
-		n += (size - 1) * ft_len(sep);
-	return (n);
+	len = 0;
+	while (i < size)
+	{
+		len += ft_len(strs[i]);
+		i++;
+	}
+	sep_len = ft_len(sep) * (size - 1);
+	len += sep_len;
+	return (len);
+}
+
+char	*size_zero(void)
+{
+	char	*dest;
+
+	dest = (char *)malloc(sizeof(char));
+	dest[0] = 0;
+	return (dest);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i;
-	int		len;
 	int		j;
 	char	*dest;
 
-	i = -1;
-	len = get_len(size, strs, sep);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
+	i = get_len(size, strs, sep);
+	if (size == 0)
+		return (size_zero());
+	dest = (char *)malloc(sizeof(char) * (i + 1));
 	if (dest == 0)
 		return (0);
 	j = 0;
@@ -72,6 +88,5 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 			j += ft_len(sep);
 		}
 	}
-	dest[j] = 0;
 	return (dest);
 }

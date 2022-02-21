@@ -10,95 +10,56 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	base_over(char *base, int base_len)
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	valid_base(char *str)
 {
 	int	i;
 	int	j;
 
-	i = -1;
-	while (++i < base_len - 1)
+	i = 0;
+	if (ft_strlen(str) < 2)
+		return (0);
+	while (str[i] != '\0')
 	{
-		j = i;
-		while (++j < base_len)
+		j = i + 1;
+		while (str[j] != '\0')
 		{
-			if (base[i] == base[j])
+			if (str[i] == str[j])
 				return (0);
+			j++;
 		}
-	}
-	return (1);
-}
-
-int	valid_base(char *base)
-{
-	int	base_len;
-
-	base_len = 0;
-	while (base[base_len])
-	{
-		if (base[base_len] == '+' || base[base_len] == '-'
-			|| base[base_len] == ' '
-			|| (base[base_len] >= 9 && base[base_len] <= 13))
+		if ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 			return (0);
-		base_len++;
+		if (str[i] == '+' || str[i] == '-')
+			return (0);
+		i++;
 	}
-	if (base_len < 2)
-		return (0);
-	if (base_over(base, base_len) != 1)
-		return (0);
-	return (1);
+	return (i);
 }
 
-int	co_re(char *str, char *base, int result, int base_len)
+int	get_idx_base(char c, char *base)
 {
 	int	i;
 
-	while (*str)
-	{
-		i = -1;
-		while (base[++i])
-		{
-			if (base[i] == *str)
-			{
-				result = result * base_len + i;
-				break ;
-			}
-		}
-		if (i < base_len)
-			str++;
-		else
-			return (result);
-	}
-	return (result);
+	i = -1;
+	while (base[++i])
+		if (c == base[i])
+			return (i);
+	return (-1);
 }
 
-int	ft_atoi(char *str, char *base, int result, int base_len)
+int	get_nbrlen(unsigned int n, unsigned int base_size)
 {
-	int	negative;
-
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		str++;
-	negative = 1;
-	while (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			negative *= -1;
-		str++;
-	}
-	result = co_re(str, base, result, base_len);
-	return (result * negative);
-}
-
-int	ft_atoi_base(char *str, char *base)
-{
-	int	base_len;
-	int	result;
-
-	result = 0;
-	if (valid_base(base) != 1)
-		return (0);
-	base_len = 0;
-	while (base[base_len])
-		base_len++;
-	result = ft_atoi(str, base, result, base_len);
-	return (result);
+	if (n < base_size)
+		return (1);
+	return (1 + get_nbrlen(n / base_size, base_size));
 }
