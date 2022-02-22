@@ -38,7 +38,7 @@ int	ft_atoi_base(char *str, char *base, int size)
 		n = n * size + i;
 		i = get_idx_base(*str++, base);
 	}
-	return (n);
+	return (n * negative);
 }
 
 unsigned int	get_nb(int n)
