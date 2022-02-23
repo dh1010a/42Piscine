@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dopaek <dopaek@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 20:08:26 by dopaek            #+#    #+#             */
-/*   Updated: 2022/02/22 20:08:26 by dopaek           ###   ########.fr       */
+/*   Created: 2022/02/23 12:27:48 by dopaek            #+#    #+#             */
+/*   Updated: 2022/02/23 12:27:49 by dopaek           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
-
-int	main(int ac, char **av)
+void	ft_strswap(char **a, char **b)
 {
-	if (ac == 4)
+	char	*temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
+{
+	int	i;
+	int	j;
+	int	len;
+
+	len = 0;
+	while (tab[len])
+		len++;
+	i = 1;
+	while (i <= len)
 	{
-		if ((av[2][0] == '+' || av[2][0] == '-' || av[2][0] == '*'
-		|| av[2][0] == '%' || av[2][0] == '/') && av[2][1] == '\0')
+		j = 0;
+		while (j < len - i)
 		{
-			ft_doop(ft_atoi(av[1]), av[2][0], ft_atoi(av[3]));
-			return (0);
+			if (cmp(tab[j], tab[j + 1]) > 0)
+				ft_swap(&tab[j], &tab[j + 1]);
+			j++;
 		}
-		else
-		{
-			write(1, "0\n", 2);
-			return (0);
-		}
+		i++;
 	}
-	return (0);
 }

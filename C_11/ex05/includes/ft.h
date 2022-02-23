@@ -15,5 +15,15 @@
 
 # include <unistd.h>
 
+int		add(int n1, int n2);
+int		minus(int n1, int n2);
+int		mul(int n1, int n2);
+int		div(int n1, int n2);
+int		mod(int n1, int n2);
+int		ft_atoi(char *str);
+void	ft_putchar(char c);
+void	ft_putstr(char *str);
+void	ft_doop(int x, char cal, int y);
+void	ft_putnbr(int nb);
 
 #endif
