@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_strswap(char **a, char **b)
+void	ft_swap(char **a, char **b)
 {
 	char	*temp;
 
